@@ -1,6 +1,7 @@
+package model.user;
 
-public interface Users {
-    User trouverParId(String idUtilisateur);
+public interface Utilisateurs {
+    Utilisateur trouverParId(String idUtilisateur);
 
     void sauvegarderUtilisateur(Utilisateur utilisateur);
 }

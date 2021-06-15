@@ -1,53 +1,67 @@
 package model.user;
 
 
+import model.Exception.PrixNonValideException;
+import model.Exception.UserIsNotPublicException;
+import model.Exception.UserIsPublicException;
+import model.messageErreur.MessagesModel;
+
 import java.sql.Date;
+import java.util.List;
 
 public class Utilisateur {
 
-    private IdUtilisateur id;
-    private String nom;
-    private String prenom;
-    private Date dateAnniversaire;
-    private String email;
-    private String adresse;
-
-    public Utilisateur(IdUtilisateur id, String name, String prenom, Date dateAnniversaire, String email, String adresse) {
-        this.id = id;
-        this.nom = name;
-        this.prenom = prenom;
-        this.dateAnniversaire = dateAnniversaire;
-        this.email = email;
-        this.adresse = adresse;
-    }
+    private String id;
+    private String name;
+    private String login;
 
     public Utilisateur() {
 
     }
 
+
+    public Utilisateur(String id, String name, String login) {
+        this.id = id;
+        this.name = name;
+        this.login = login;
+    }
+
     public String getId() {
-        return id.getId();
+        return id;
     }
 
-    public String getNom() {
-        return nom;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getName() {
+        return name;
     }
 
-    public Date getDateAnniversaire() {
-        return dateAnniversaire;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void isPublic() throws UserIsPublicException {
+        if(login == null || name == null){
+            throw new UserIsPublicException(MessagesModel.USER_IS_PUBLIC_EXCEPTION);
+        }
+    }
+
+    public void isNotPublic() throws UserIsNotPublicException {
+        if(login != null && name != null){
+            throw new UserIsNotPublicException(MessagesModel.USER_IS_NOT_PUBLIC_EXCEPTION);
+        }
     }
 
 
 }
+
