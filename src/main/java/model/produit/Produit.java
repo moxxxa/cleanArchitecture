@@ -49,4 +49,5 @@ public class Produit {
     public String getId() {
         return idProduit.getId();
     }
+
 }

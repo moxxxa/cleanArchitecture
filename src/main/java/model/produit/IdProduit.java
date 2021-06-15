@@ -10,5 +10,4 @@ public class IdProduit {
     public String getId() {
         return id;
     }
-
 }
