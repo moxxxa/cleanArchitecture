@@ -15,14 +15,6 @@ public class SellHistory {
         this.date = date;
     }
 
-    public void discount(){
-
-    }
-
-    public void discount(){
-
-    }
-
     public String getIdUtilisateur() {
         return idUtilisateur;
     }
