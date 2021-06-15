@@ -24,7 +24,8 @@ public class CallProductNoAnonymously {
         Utilisateur utilisateur = utilisateurs.trouverParId(idUtilisateur);
         utilisateur.isNotPublic();
         Produit produit = produits.trouverParId(idProduit);
-        List<SellHistory> sellHistoryList = sellHistories.findByUserId(utilisateur.getId(), produit.idProduit());
+
+        produit.setDiscountOrIncount(SellHistory.discountIncount(sellHistories.findByUserId(utilisateur.getId(), produit.idProduit())));
 
         return produit.setDiscountOrIncount(SellHistory.checkIsEligbleToDiscount(sellHistoryList));;
     }

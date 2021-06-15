@@ -82,10 +82,9 @@ public class Produit {
         this.details = details;
     }
 
-    public Produit setDiscountOrIncount(short discount) {
+    public void setDiscountOrIncount(short discount) {
         if (discount != 0) {
             this.prix = this.prix + ((prix * discount) / 100);
         }
-        return this;
     }
 }

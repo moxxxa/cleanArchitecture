@@ -40,7 +40,7 @@ public class SellHistory {
         this.date = date;
     }
 
-    public short discountIncount(List<SellHistory> sellHistoryList, String idProduitToBuy) {
+    public static short discountIncount(List<SellHistory> sellHistoryList, String idProduitToBuy) {
         int totalPercentage = 0;
         if (checkDiscount(sellHistoryList)) {
             totalPercentage += -10;
@@ -52,7 +52,7 @@ public class SellHistory {
     }
 
     // -10% if the user bought 3 or more other products during the last 6 months
-    public boolean checkDiscount(List<SellHistory> sellHistoryList) {
+    public static boolean checkDiscount(List<SellHistory> sellHistoryList) {
         int cpt = 0;
         for (SellHistory sell: sellHistoryList) {
             Date beforeSixMonths = getDateBeforeSixMonths();
@@ -67,7 +67,7 @@ public class SellHistory {
     }
 
     // +5% if the user bought the exact same product more than 5 times in the last year
-    public boolean checkIncount(List<SellHistory> sellHistoryList, String idProduitToBuy) {
+    public static boolean checkIncount(List<SellHistory> sellHistoryList, String idProduitToBuy) {
         int cpt = 0;
         for (SellHistory sell: sellHistoryList) {
             if (sell.getIdProduits() != null) {
