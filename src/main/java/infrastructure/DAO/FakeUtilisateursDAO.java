@@ -6,12 +6,14 @@ import use_case.Utilisateurs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UtilisateursDAO implements Utilisateurs {
+public class FakeUtilisateursDAO implements Utilisateurs {
 
     List<Utilisateur> utilisateursList;
 
-    public UtilisateursDAO(){
+    public FakeUtilisateursDAO(){
         this.utilisateursList = new ArrayList<>();
+        utilisateursList.add(new Utilisateur("1", "Paul", "PaulTheKiller"));
+        utilisateursList.add(new Utilisateur("2"));
     }
 
     public Utilisateur trouverParId(String idUtilisateur){

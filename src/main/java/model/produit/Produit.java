@@ -19,11 +19,11 @@ public class Produit {
 
     private Map<String, String> details;
 
-    public Produit(String idProduit, String name, String description, Price price, String category, Map<String, String> details) {
+    public Produit(String idProduit, String name, String description, int price, String category, Map<String, String> details) throws NotValidePriceException {
         this.idProduit = idProduit;
         this.name = name;
         this.description = description;
-        this.price = price;
+        this.price = new Price(BigDecimal.valueOf(price));
         this.category = category;
         this.details = details;
     }
@@ -89,5 +89,17 @@ public class Produit {
             Price newprice = new Price(this.price.getPrice().add((this.price.getPrice().multiply(new BigDecimal(discount) ).divide(new BigDecimal(100)))));
             this.price = newprice;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Produit{" +
+                "idProduit='" + idProduit + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price.getPrice() +
+                ", category='" + category + '\'' +
+                ", details=" + details +
+                '}';
     }
 }

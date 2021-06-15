@@ -11,10 +11,9 @@ public class Utilisateur {
     private String name;
     private String login;
 
-    public Utilisateur() {
-
+    public Utilisateur(String id) {
+        this.id = id;
     }
-
 
     public Utilisateur(String id, String name, String login) {
         this.id = id;
@@ -47,13 +46,13 @@ public class Utilisateur {
     }
 
     public void isPublic() throws UserIsPublicException {
-        if(login == null || name == null){
+        if(login != null || name != null){
             throw new UserIsPublicException(MessagesModel.USER_IS_PUBLIC_EXCEPTION);
         }
     }
 
     public void isNotPublic() throws UserIsNotPublicException {
-        if(login != null && name != null){
+        if(login == null || name == null){
             throw new UserIsNotPublicException(MessagesModel.USER_IS_NOT_PUBLIC_EXCEPTION);
         }
     }
