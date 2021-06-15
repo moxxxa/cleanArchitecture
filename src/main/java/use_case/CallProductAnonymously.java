@@ -1,11 +1,10 @@
-package use_case.CallProductAnonymously;
+package use_case;
 
-import model.Exception.UserIsNotPublicException;
 import model.Exception.UserIsPublicException;
 import model.produit.Produit;
-import model.produit.Produits;
+import use_case.Produits;
 import model.user.Utilisateur;
-import model.user.Utilisateurs;
+import use_case.Utilisateurs;
 
 public class CallProductAnonymously {
     private Produits produits;

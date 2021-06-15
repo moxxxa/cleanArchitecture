@@ -1,7 +1,5 @@
 package model.SellHistory;
 
-import model.user.Utilisateurs;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;

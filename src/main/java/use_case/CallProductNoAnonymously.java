@@ -1,14 +1,13 @@
-package use_case.CallProductNoAnonymously;
+package use_case;
 
 import model.Exception.NotValidePriceException;
 import model.Exception.UserIsNotPublicException;
-import model.Exception.UserIsPublicException;
-import model.SellHistory.SellHistories;
+import use_case.SellHistories;
 import model.SellHistory.SellHistory;
 import model.produit.Produit;
-import model.produit.Produits;
+import use_case.Produits;
 import model.user.Utilisateur;
-import model.user.Utilisateurs;
+import use_case.Utilisateurs;
 
 public class CallProductNoAnonymously {
     private Produits produits;

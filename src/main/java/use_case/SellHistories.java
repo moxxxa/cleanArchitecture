@@ -1,4 +1,6 @@
-package model.SellHistory;
+package use_case;
+
+import model.SellHistory.SellHistory;
 
 import java.util.List;
 
