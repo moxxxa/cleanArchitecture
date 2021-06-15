@@ -1,4 +1,4 @@
-package model.achat;
+package model.SellHistory;
 
 import java.util.List;
 

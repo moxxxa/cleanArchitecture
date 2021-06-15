@@ -1,13 +1,9 @@
 package model.user;
 
 
-import model.Exception.PrixNonValideException;
 import model.Exception.UserIsNotPublicException;
 import model.Exception.UserIsPublicException;
 import model.messageErreur.MessagesModel;
-
-import java.sql.Date;
-import java.util.List;
 
 public class Utilisateur {
 

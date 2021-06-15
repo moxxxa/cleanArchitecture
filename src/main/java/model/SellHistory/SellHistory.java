@@ -1,8 +1,10 @@
-package model.achat;
+package model.SellHistory;
 
 import model.user.Utilisateurs;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class SellHistory {
     private String idUtilisateur;
@@ -41,7 +43,7 @@ public class SellHistory {
     }
 
     public static short discountIncount(List<SellHistory> sellHistoryList, String idProduitToBuy) {
-        int totalPercentage = 0;
+        short totalPercentage = 0;
         if (checkDiscount(sellHistoryList)) {
             totalPercentage += -10;
         }
@@ -57,7 +59,7 @@ public class SellHistory {
         for (SellHistory sell: sellHistoryList) {
             Date beforeSixMonths = getDateBeforeSixMonths();
             if (sell.getDate().compareTo(beforeSixMonths) > 0) {
-                cpt += (sell.getIdProduits() != null) ? sell.getIdProduits().length() : 0;
+                cpt += (sell.getIdProduits() != null) ? sell.getIdProduits().size() : 0;
             }
             if (cpt >= 3) {
                 return true;
@@ -84,11 +86,14 @@ public class SellHistory {
         return false;
     }
 
-    public Date getDateBeforeSixMonths() {
+    public static Date getDateBeforeSixMonths() {
         Date referenceDate = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(referenceDate);
         c.add(Calendar.MONTH, -6);
-        reutnr c.getTime();
+        c.getTime();
+        return c.getTime();
     }
+
+
 }

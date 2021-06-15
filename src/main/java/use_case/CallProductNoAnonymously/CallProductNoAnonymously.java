@@ -1,7 +1,10 @@
 package use_case.CallProductNoAnonymously;
 
+import model.Exception.NotValidePriceException;
 import model.Exception.UserIsNotPublicException;
 import model.Exception.UserIsPublicException;
+import model.SellHistory.SellHistories;
+import model.SellHistory.SellHistory;
 import model.produit.Produit;
 import model.produit.Produits;
 import model.user.Utilisateur;
@@ -20,13 +23,13 @@ public class CallProductNoAnonymously {
         this.sellHistories = sellHistories;
     }
 
-    public Produit callProduct(String idProduit, String idUtilisateur) throws UserIsNotPublicException {
+    public Produit callProduct(String idProduit, String idUtilisateur) throws UserIsNotPublicException, NotValidePriceException {
         Utilisateur utilisateur = utilisateurs.trouverParId(idUtilisateur);
         utilisateur.isNotPublic();
         Produit produit = produits.trouverParId(idProduit);
 
-        produit.setDiscountOrIncount(SellHistory.discountIncount(sellHistories.findByUserId(utilisateur.getId(), produit.idProduit())));
+        produit.setDiscountOrIncount(SellHistory.discountIncount(sellHistories.findByUserId(utilisateur.getId()), produit.getIdProduit()));
 
-        return produit.setDiscountOrIncount(SellHistory.checkIsEligbleToDiscount(sellHistoryList));;
+        return produit;
     }
 }
