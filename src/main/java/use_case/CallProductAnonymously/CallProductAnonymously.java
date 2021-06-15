@@ -1,5 +1,12 @@
 package use_case.CallProductAnonymously;
 
+import model.Exception.UserIsNotPublicException;
+import model.Exception.UserIsPublicException;
+import model.produit.Produit;
+import model.produit.Produits;
+import model.user.Utilisateur;
+import model.user.Utilisateurs;
+
 public class CallProductAnonymously {
     private Produits produits;
 
@@ -10,13 +17,9 @@ public class CallProductAnonymously {
         this.utilisateurs = utilisateurs;
     }
 
-    public callProduct(String idProduit, String idUtilisateur) {
+    public Produit callProduct(String idProduit, String idUtilisateur) throws UserIsPublicException {
         Utilisateur utilisateur = utilisateurs.trouverParId(idUtilisateur);
-        Produit produit = produits.trouverParId(idProduit); //  déclenche une exception si ça ne fonctionne pas
-
-
-
-
-
+        utilisateur.isPublic();
+        return produits.trouverParId(idProduit);
     }
 }

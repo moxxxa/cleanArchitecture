@@ -3,6 +3,7 @@ package model.produit;
 import java.math.BigDecimal;
 
 import model.Exception.PrixNonValideException;
+import model.messageErreur.MessagesModel;
 
 public class Prix {
     private final BigDecimal prix;
@@ -14,4 +15,7 @@ public class Prix {
         this.prix = prix;
     }
 
+    public BigDecimal getPrix() {
+        return prix;
+    }
 }

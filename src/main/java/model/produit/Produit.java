@@ -1,38 +1,30 @@
 package model.produit;
 
+
 import java.math.BigDecimal;
+import java.util.Map;
 
 public class Produit {
-    private String name;
-    private String description;
-    private Prix prix;
-    private long stock;
-    private IdProduit idProduit;
+    private String idProduit;
 
-    public Produit(final String name, final String description, final Prix prix, final IdProduit idProduit, final long stock) {
+    private String name;
+
+    private String description;
+
+    private Prix prix;
+
+    private String category;
+
+    private Map<String, String> details;
+
+    public Produit(String idProduit, String name, String description, Prix prix, String category, Map<String, String> details) {
+        this.idProduit = idProduit;
         this.name = name;
         this.description = description;
         this.prix = prix;
-        this.idProduit = idProduit;
-        this.stock = stock;
+        this.category = category;
+        this.details = details;
     }
-
-    public boolean disponible() throws StockEpuiserException {
-        if(stock > 0){
-            return true;
-        }
-        throw  new StockEpuiserException(MessagesModel.STOCK_EPUISER);
-    }
-
-    public void diminuerStockDeUn() throws StockEpuiserException {
-        if (stock > 0) {
-            stock -= 1;
-            return ;
-        }
-        throw new StockEpuiserException(MessagesModel.STOCK_EPUISER);
-    }
-
-    public void incrementStock() { stock += 1;}
 
     public String getName() {
         return name;
@@ -47,7 +39,46 @@ public class Produit {
     }
 
     public String getId() {
-        return idProduit.getId();
+        return idProduit;
     }
 
+    public String getIdProduit() {
+        return idProduit;
+    }
+
+    public void setIdProduit(String idProduit) {
+        this.idProduit = idProduit;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Prix getPrix() {
+        return prix;
+    }
+
+    public void setPrix(Prix prix) {
+        this.prix = prix;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Map<String, String> getDetails() {
+        return details;
+    }
+
+    public void setDetails(Map<String, String> details) {
+        this.details = details;
+    }
 }
