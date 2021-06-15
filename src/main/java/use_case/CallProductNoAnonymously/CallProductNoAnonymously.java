@@ -12,14 +12,20 @@ public class CallProductNoAnonymously {
 
     private Utilisateurs utilisateurs;
 
-    public CallProductNoAnonymously(Produits produits, Utilisateurs utilisateurs) {
+    private SellHistories sellHistories;
+
+    public CallProductNoAnonymously(Produits produits, Utilisateurs utilisateurs, SellHistories sellHistories) {
         this.produits = produits;
         this.utilisateurs = utilisateurs;
+        this.sellHistories = sellHistories;
     }
 
     public Produit callProduct(String idProduit, String idUtilisateur) throws UserIsNotPublicException {
         Utilisateur utilisateur = utilisateurs.trouverParId(idUtilisateur);
         utilisateur.isNotPublic();
-        return produits.trouverParId(idProduit);
+        Produit produit = produits.trouverParId(idProduit);
+        List<SellHistory> sellHistoryList = sellHistories.findByUserId(utilisateur.getId(), produit.idProduit());
+
+        return produit.setDiscountOrIncount(SellHistory.checkIsEligbleToDiscount(sellHistoryList));;
     }
 }
